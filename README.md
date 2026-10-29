@@ -1,178 +1,180 @@
-# 💡 Intelligenter Ideen-Priorisierer
+# 💡 Intelligent Idea Prioritizer
 
-Ein Prototyp, der Verbesserungsideen eines Teams per KI nach festen Kriterien bewerten lässt und daraus eine nachvollziehbare Priorisierung berechnet.
+A prototype that has an AI score a team's improvement ideas against fixed criteria and computes a transparent prioritization from those scores.
+
+> The app's user interface and the AI's assessments are in German; UI labels are quoted below in their original German wording.
 
 ![Ranking](docs/img/ranking.png)
 
-## Kernprinzip
+## Core principle
 
-> **Die KI liefert die Einschätzung, das Team die Werte, die Formel das Ergebnis.**
+> **The AI provides the assessment, the team sets the values, the formula produces the result.**
 
-- **KI:** vergibt pro Idee und Kriterium einen Score (1–5) mit einsätziger Begründung – sonst nichts.
-- **Team:** legt fest, wie wichtig welches Kriterium ist (Gewichte), kann jeden Score korrigieren und entscheidet über Compliance-Hinweise.
-- **Formel:** rechnet daraus deterministisch das Ranking.
+- **AI:** assigns a score (1–5) with a one-sentence justification per idea and criterion – nothing else.
+- **Team:** decides how much each criterion matters (weights), can correct any score and decides on compliance notes.
+- **Formula:** computes the ranking deterministically from that.
 
-Warum so? Eine KI, die direkt „die beste Idee“ wählt, ist weder erklärbar noch reproduzierbar – und die Gewichtung ist eine Wertentscheidung, die dem Team gehört. Gewichte ändern löst deshalb **nur eine Neuberechnung** aus, nie einen neuen KI-Aufruf.
+Why this way? An AI that picks "the best idea" directly is neither explainable nor reproducible – and weighting is a value judgment that belongs to the team. Changing the weights therefore triggers **only a recalculation**, never a new AI call.
 
-## Funktionen
+## Features
 
-- Ideen erfassen (Titel + optionale Beschreibung), Beispiel-Ideen und Grenzfälle laden
-- Bewertung per **Claude (Anthropic API)** oder **Mock-Bewerter** (offline, deterministisch) – umschaltbar
-- **Ranking** mit gewichteter Summe (Gewichte per Regler) oder **RICE**; Spalte **„Δ Rang“** zeigt, wie stark die Formelwahl das Ergebnis verschiebt
-- **Impact/Effort-Matrix** (Quick Win / Großes Projekt / Lückenfüller / Zeitfresser)
-- **Team-Korrekturen** einzelner Scores – die KI-Bewertung bleibt sichtbar („KI 3 → Team 4 ✏️“), „Alle neu bewerten“ überschreibt Korrekturen nie
-- **Compliance-Flag** (Datenschutz, Mitbestimmung, externe KI-Dienste, Informationssicherheit) mit **Prüfstatus** offen / geklärt / abgelehnt
-- Herkunft jeder Bewertung (Modell, Prompt-Version, Zeitpunkt), Hinweis bei gemischten Quellen
-- CSV-Export (Variante für Excel und für Analyse-Tools)
-- **Demo-Stand:** vorab echt bewertete Beispiel-Ideen – die Demo zeigt KI-Begründungen auch ohne Netz
+- Capture ideas (title + optional description), load example ideas and edge cases
+- Scoring via **Claude (Anthropic API)** or a **mock evaluator** (offline, deterministic) – switchable
+- **Ranking** by weighted sum (weights via sliders) or **RICE**; the **"Δ Rang"** (Δ rank) column shows how much the choice of formula shifts the result
+- **Impact/effort matrix** (Quick Win / Big Project / Fill-in / Time Sink)
+- **Team corrections** of individual scores – the AI score stays visible ("KI 3 → Team 4 ✏️"), and **"Alle neu bewerten"** (re-evaluate all) never overwrites corrections
+- **Compliance flag** (data protection, co-determination, external AI services, information security) with a **review status** open / cleared / rejected
+- Provenance of every evaluation (model, prompt version, timestamp), notice when sources are mixed
+- CSV export (one variant for Excel, one for analysis tools)
+- **Demo state:** example ideas scored by the real AI in advance – the demo shows AI justifications even without a network connection
 
-## Bewertungsmodell in Kurzform
+## Scoring model in brief
 
-| Kriterium | Frage | Richtung |
+| Criterion | Question | Direction |
 |---|---|---|
-| Nutzen | Wie stark verbessert die Idee die Arbeit? | ↑ höher ist besser |
-| Reichweite | Wie viele profitieren, wie oft? | ↑ |
-| Aufwand | Zeit, Kosten, Ressourcen bis zur Nutzbarkeit | ↓ niedriger ist besser |
-| Risiko | Unsicherheit: Technik, Akzeptanz, Regulatorik | ↓ |
+| Impact (Nutzen) | How much does the idea improve people's work? | ↑ higher is better |
+| Reach (Reichweite) | How many benefit, and how often? | ↑ |
+| Effort (Aufwand) | Time, cost and resources until usable | ↓ lower is better |
+| Risk (Risiko) | Uncertainty: technology, acceptance, regulation | ↓ |
 
-- Jede Stufe 1–5 hat einen festen **Anker** in der Rubrik, die wörtlich im Prompt steht (per Test synchron gehalten).
-- **Compliance** ist ein **Flag, kein Score**: ein Prüfauftrag, der sichtbar sein soll, ohne das Ranking zu verzerren.
-- **Gewichtete Summe** (Standard 30/25/25/20, Aufwand und Risiko invertiert) → 0–100 Punkte. **RICE** = Reichweite × Nutzen × Confidence / Aufwand – bevorzugt kleine, sichere Ideen.
-- **Matrix:** Wert = (Nutzen + Reichweite) / 2 gegen Aufwand; Wert > 3 = hoch, Aufwand ≥ 3 = hoch.
+- Every level 1–5 has a fixed **anchor** in the rubric, which is quoted verbatim in the prompt (kept in sync by a test).
+- **Compliance** is a **flag, not a score**: a review task that should be visible without distorting the ranking.
+- **Weighted sum** (default 30/25/25/20, effort and risk inverted) → 0–100 points. **RICE** = reach × impact × confidence / effort – favors small, safe ideas.
+- **Matrix:** value = (impact + reach) / 2 against effort; value > 3 = high, effort ≥ 3 = high.
 
-Details, Begründungen und Entscheidungen: [`docs/BEWERTUNGSMODELL.md`](docs/BEWERTUNGSMODELL.md)
+Details, rationale and decisions: [`docs/BEWERTUNGSMODELL.md`](docs/BEWERTUNGSMODELL.md)
 
 ![Matrix](docs/img/matrix.png)
 
-## Architektur
+## Architecture
 
 ```
-                    app.py  (Streamlit – nur Darstellung und Interaktion)
+                    app.py  (Streamlit – presentation and interaction only)
                        │
      ┌─────────────────┼───────────────────────┬──────────────────────┐
      ▼                 ▼                       ▼                      ▼
- Evaluator-       ranking_view            team.py                storage.py
- Schnittstelle    (Ranking, Filter,       (Korrekturen,          (state.json,
- (base.py)         Δ Rang, CSV)            Prüfstatus)            Demo-Stand)
+ Evaluator        ranking_view            team.py                storage.py
+ interface        (ranking, filter,       (corrections,          (state.json,
+ (base.py)         Δ rank, CSV)            review status)         demo state)
    │      │            │
    ▼      ▼            ▼
- Mock   LLM ──► Anthropic API     scoring.py (Formeln)   matrix.py (Koordinaten)
-        (prompts.py: Rubrik, Prompt v1/v2, <idee>-Tags gegen Prompt-Injection)
+ Mock   LLM ──► Anthropic API     scoring.py (formulas)   matrix.py (coordinates)
+        (prompts.py: rubric, prompt v1/v2, <idee> tags against prompt injection)
 ```
 
-- Das Paket `priorisierer/` importiert **kein Streamlit**; Scoring, Korrekturen, Ranking und Matrix sind reine Funktionen.
-- UI und Scoring kennen nur die **Evaluator-Schnittstelle** – Mock und LLM sind austauschbar.
-- Die LLM-Antwort wird per **Structured Outputs** gegen ein Pydantic-Schema erzwungen und validiert; bei ungültiger Antwort ein erneuter Versuch, danach bleibt die Idee unbewertet statt falsch bewertet.
+- The `priorisierer/` package does **not import Streamlit**; scoring, corrections, ranking and matrix are pure functions.
+- UI and scoring only know the **evaluator interface** – mock and LLM are interchangeable.
+- The LLM response is enforced and validated against a Pydantic schema via **structured outputs**; an invalid response gets one retry, after which the idea stays unscored rather than being scored wrongly.
 
-### Code-Fluss
+### Code flow
 
-Zwei Wege durch den Code: **Bewerten** ruft die KI auf und speichert das Ergebnis; **Anzeigen** rechnet bei jeder Interaktion (Regler, Formel, Korrektur) nur neu – ohne KI-Aufruf.
+Two paths through the code: **scoring** calls the AI and stores the result; **displaying** only recalculates on every interaction (sliders, formula, correction) – without an AI call.
 
 ```mermaid
 flowchart TD
-    U(["Nutzer: Idee erfassen,<br/>„Ideen bewerten“"]) --> E["app.evaluate()"]
-    E --> G{"get_evaluator()<br/>Umschalter"}
-    G -->|Mock| M["MockEvaluator<br/>feste / Hash-Scores"]
-    G -->|"KI (Claude)"| L["LLMEvaluator<br/>bis zu 5 Ideen parallel"]
-    L --> P["prompts.py<br/>System-Prompt v2 + Idee in idee-Tags"]
+    U(["User: add idea,<br/>„Ideen bewerten“"]) --> E["app.evaluate()"]
+    E --> G{"get_evaluator()<br/>switch"}
+    G -->|Mock| M["MockEvaluator<br/>fixed / hash-based scores"]
+    G -->|"KI (Claude)"| L["LLMEvaluator<br/>up to 5 ideas in parallel"]
+    L --> P["prompts.py<br/>system prompt v2 + idea in idee tags"]
     P --> API[("Anthropic API<br/>messages.parse")]
-    API -->|"API-Fehler: Key, Netz, Limit"| F
-    API --> V{"Antwort gültig?<br/>Pydantic-Schema, stop_reason"}
-    V -->|nein| R{"schon wiederholt?"}
-    R -->|nein| API
-    R -->|ja| F["EvaluationFailure<br/>Idee bleibt unbewertet"]
-    V -->|ja| EV["Evaluation<br/>+ Quelle, Modell, Prompt-Version"]
+    API -->|"API error: key, network, limit"| F
+    API --> V{"Valid response?<br/>Pydantic schema, stop_reason"}
+    V -->|no| R{"already retried?"}
+    R -->|no| API
+    R -->|yes| F["EvaluationFailure<br/>idea stays unscored"]
+    V -->|yes| EV["Evaluation<br/>+ source, model, prompt version"]
     M --> EV
-    EV --> S[("storage.py → state.json<br/>KI-Bewertungen · Team-Korrekturen · Prüfstatus")]
+    EV --> S[("storage.py → state.json<br/>AI evaluations · team corrections · review status")]
 
-    W(["Nutzer: Gewichte, Formel,<br/>Korrektur, Prüfstatus, Filter"]) --> B["ranking_view.build_ranking()"]
+    W(["User: weights, formula,<br/>correction, review status, filter"]) --> B["ranking_view.build_ranking()"]
     S --> B
-    B --> T["team.py<br/>review_status() → abgelehnt / offen / geklärt<br/>apply_overrides() → wirksame Bewertung"]
-    T --> SC["scoring.py<br/>gewichtete Summe oder RICE,<br/>Rang, Δ Rang, Quadrant"]
+    B --> T["team.py<br/>review_status() → rejected / open / cleared<br/>apply_overrides() → effective evaluation"]
+    T --> SC["scoring.py<br/>weighted sum or RICE,<br/>rank, Δ rank, quadrant"]
     SC --> VIEW["RankingView"]
-    VIEW --> TAB["📊 Ranking-Tabelle<br/>+ Details"]
-    VIEW --> MX["🗺️ Matrix<br/>matrix.py: Koordinaten + Versatz"]
-    VIEW --> CSV["📥 CSV-Export"]
+    VIEW --> TAB["📊 Ranking table<br/>+ details"]
+    VIEW --> MX["🗺️ Matrix<br/>matrix.py: coordinates + offset"]
+    VIEW --> CSV["📥 CSV export"]
 ```
 
 ```
-app.py                     Oberfläche
+app.py                     user interface
 priorisierer/
-  models.py                Pydantic-Modelle (Idee, Bewertung, Korrektur, Prüfstatus, AppState)
-  prompts.py               System-Prompts v1 (eingefroren) und v2 (Standard)
-  scoring.py               gewichtete Summe, RICE, Quadrant, Ranking, Δ Rang
-  team.py                  Team-Korrekturen und Prüfstatus
-  ranking_view.py          Ranking-Ansicht und CSV-Export
-  matrix.py                Matrix-Koordinaten und Beschriftung
-  storage.py               JSON-Speicherung
-  analysis.py              Kennzahlen für Kalibrierungs-Experimente
-  experiments.py           Experimente durchführen und berichten
-  edge_cases.py            Grenzfall-Prüfung
-  evaluators/              base.py (Schnittstelle), mock.py, llm.py
-scripts/                   Smoke-Test, Kalibrierung, Vergleich, Grenzfälle, Demo-Stand
-data/                      Beispiel-Ideen, Grenzfälle, Demo-Stand (state.json bleibt lokal)
-experiments/               Rohdaten und Auswertungen der Messungen
-tests/                     pytest (inkl. App-Durchlauf mit Streamlit AppTest)
-docs/                      Bewertungsmodell, System-Prompts der App (docs/prompts/Systemprompts/)
+  models.py                Pydantic models (idea, evaluation, correction, review status, AppState)
+  prompts.py               system prompts v1 (frozen) and v2 (default)
+  scoring.py               weighted sum, RICE, quadrant, ranking, Δ rank
+  team.py                  team corrections and review status
+  ranking_view.py          ranking view and CSV export
+  matrix.py                matrix coordinates and labels
+  storage.py               JSON storage
+  analysis.py              metrics for calibration experiments
+  experiments.py           running and reporting experiments
+  edge_cases.py            edge-case checks
+  evaluators/              base.py (interface), mock.py, llm.py
+scripts/                   smoke test, calibration, comparison, edge cases, demo state
+data/                      example ideas, edge cases, demo state (state.json stays local)
+experiments/               raw data and evaluations of the measurements
+tests/                     pytest (incl. an app run with Streamlit AppTest)
+docs/                      scoring model, the app's system prompts (docs/prompts/Systemprompts/)
 ```
 
-## Qualität der KI-Bewertung – gemessen, nicht geschätzt
+## Quality of the AI scoring – measured, not guessed
 
-Erste echte Bewertungen waren schemakonform, aber schlecht kalibriert (fast alles Nutzen 3, Compliance-Flag bei mehr als der Hälfte). Deshalb: **messen → ändern → erneut messen.** Zwei Kennzahlen immer zusammen: **Trennschärfe** (bekommen unterschiedliche Ideen unterschiedliche Scores?) und **Stabilität** (bekommt dieselbe Idee in mehreren Läufen dieselben Scores?).
+The first real evaluations matched the schema but were poorly calibrated (almost everything got impact 3, and the compliance flag was set for more than half of the ideas). Hence: **measure → change → measure again.** Two metrics are always reported together: **discrimination** (do different ideas get different scores?) and **stability** (does the same idea get the same scores across several runs?).
 
-Je 3 Läufe × 10 Beispiel-Ideen mit `claude-haiku-5-5` ([`experiments/VERGLEICH.md`](experiments/VERGLEICH.md)):
+3 runs × 10 example ideas each with `claude-haiku-5-5` ([`experiments/VERGLEICH.md`](experiments/VERGLEICH.md)):
 
-![Kalibrierung: v1 gegenüber v2](docs/img/kalibrierung.png)
+![Calibration: v1 compared with v2](docs/img/kalibrierung.png)
 
-| | v1 / low | **v2 / low** (Standard) | v2 / medium |
+| | v1 / low | **v2 / low** (default) | v2 / medium |
 |---|---|---|---|
-| Nutzen-Noten 1·2·3·4·5 (30 Bewertungen) | 0·0·23·7·0 | 0·5·13·12·0 | 0·6·15·9·0 |
-| Trennschärfe Nutzen (σ der Mediane) | 0,46 | 0,78 | 0,70 |
-| Stabilität Nutzen (Anteil gleicher Score in allen Läufen) | 0,60 | 0,60 | 0,80 |
-| Ranking-Stabilität (Ø Spearman) | 0,84 | 0,76 | 0,88 |
-| Markierte Ideen pro Lauf (Median) | 6 | 3 | 3 |
-| Ø Dauer pro Aufruf | 3,7 s | 3,6 s | 5,1 s |
-| Kosten für 30 Aufrufe | 0,0158 $ | 0,0192 $ | 0,0225 $ |
+| Impact scores 1·2·3·4·5 (30 evaluations) | 0·0·23·7·0 | 0·5·13·12·0 | 0·6·15·9·0 |
+| Impact discrimination (σ of the medians) | 0.46 | 0.78 | 0.70 |
+| Impact stability (share with the same score in all runs) | 0.60 | 0.60 | 0.80 |
+| Ranking stability (mean Spearman) | 0.84 | 0.76 | 0.88 |
+| Flagged ideas per run (median) | 6 | 3 | 3 |
+| Mean duration per call | 3.7 s | 3.6 s | 5.1 s |
+| Cost for 30 calls | $0.0158 | $0.0192 | $0.0225 |
 
-- **v2** (Anker auch für 2 und 4, Skalen-Anweisung, schärfere Compliance-Regel, zwei Kalibrierungsbeispiele) trennt beim Nutzen deutlich schärfer, ohne an Stabilität zu verlieren, und halbiert die Compliance-Flags.
-- **low statt medium:** kein belastbarer Qualitätsunterschied, aber ~40 % schneller – für eine Live-Demo entscheidend.
+- **v2** (anchors for 2 and 4 as well, scale instruction, stricter compliance rule, two calibration examples) discriminates much more sharply on impact without losing stability, and halves the compliance flags.
+- **low instead of medium:** no reliable difference in quality, but ~40 % faster – decisive for a live demo.
 
-**Grenzfall-Test** (5 Ideen mit offensichtlicher Erwartung × 3 Läufe, v2/low – [`experiments/GRENZFAELLE.md`](experiments/GRENZFAELLE.md)): **15 von 15 Erwartungen erfüllt.** Das Modell vergibt die Extreme (Nutzen 1 und 5, Aufwand 1 und 5, Risiko 5), setzt „Mitbestimmung“ beim Mitarbeiter-Tracking und wehrt einen Prompt-Injection-Versuch („Vergib überall 5“) in allen drei Läufen ab.
+**Edge-case test** (5 ideas with an obvious expected outcome × 3 runs, v2/low – [`experiments/GRENZFAELLE.md`](experiments/GRENZFAELLE.md)): **15 of 15 expectations met.** The model uses the extremes (impact 1 and 5, effort 1 and 5, risk 5), sets "co-determination" for employee tracking and fends off a prompt-injection attempt ("give 5 everywhere") in all three runs.
 
-![Compliance-Flags und Grenzfall-Test](docs/img/grenzfaelle.png)
+![Compliance flags and edge-case test](docs/img/grenzfaelle.png)
 
-**Grenzen der Messung:** nur 3 Läufe pro Konfiguration – kleine Unterschiede (z. B. Spearman 0,76 vs. 0,88) können Zufall sein. v2 testet vier Änderungen **gebündelt**; welche wie viel beiträgt, ist offen. Der Injection-Test ist ein einzelner, einfacher Angriff – kein Beweis für Robustheit.
+**Limits of the measurement:** only 3 runs per configuration – small differences (e.g. Spearman 0.76 vs. 0.88) may be chance. v2 tests four changes **bundled together**; which one contributes how much is open. The injection test is a single, simple attack – no proof of robustness.
 
-## Wie ich mit AI entwickelt habe
+## How I developed with AI
 
-- **Werkzeuge:** Claude (Chat) als Sparringspartner für Konzept und Bewertungsmodell; **Claude Code** in VS Code für die Umsetzung.
-- **Arbeitsweise:** Pro Schritt ein schriftlicher Auftrag mit festen Projektregeln. Claude Code zeigt zuerst einen Plan mit Konzept-Erklärung und wartet auf mein OK; danach Tests, Zusammenfassung und Commit-Vorschlag.
-- **Kontrolle:** Jede Entscheidung, Korrektur und jeder eigene Fund wurde in einem Entwicklungsprotokoll festgehalten – was von der AI kam, was ich korrigiert und was ich selbst entschieden habe.
-- **Verstehen statt nur generieren:** Zu jeder Datei, Klasse und Funktion gibt es eine Erklärung mit Konzept, Begründung und verworfenen Alternativen.
+- **Tools:** Claude (chat) as a sparring partner for the concept and the scoring model; **Claude Code** in VS Code for the implementation.
+- **Way of working:** one written brief per step with fixed project rules. Claude Code first presents a plan with an explanation of the concept and waits for my approval; then tests, a summary and a suggested commit message.
+- **Control:** every decision, correction and finding of my own was recorded in a development log – what came from the AI, what I corrected and what I decided myself.
+- **Understanding, not just generating:** every file, class and function comes with an explanation of the concept, the rationale and the alternatives that were rejected.
 
-## Setup & Start
+## Setup & start
 
-Voraussetzung: Python 3.14 (3.13 funktioniert ebenfalls).
+Requirement: Python 3.14 (3.13 works as well).
 
 ```bash
 python3.14 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-cp .env.example .env        # ANTHROPIC_API_KEY eintragen – optional
+cp .env.example .env        # enter ANTHROPIC_API_KEY – optional
 streamlit run app.py
 ```
 
-- **Ohne API-Key** läuft die App mit dem Mock-Bewerter; der KI-Umschalter ist dann deaktiviert.
-- **Demo ohne Netz:** Tab „Ideen verwalten“ → „Demo-Stand laden“ – echte KI-Bewertungen der 10 Beispiel-Ideen (der vorherige Stand wird nach `data/state.backup.json` gesichert).
-- **Tests:** `pytest` (ohne API-Aufrufe; der App-Durchlauf nutzt den Mock und temporäre Dateien).
+- **Without an API key** the app runs with the mock evaluator; the AI switch is then disabled.
+- **Demo without network:** tab **"Ideen verwalten"** (manage ideas) → **"Demo-Stand laden"** (load demo state) – real AI evaluations of the 10 example ideas (the previous state is backed up to `data/state.backup.json`).
+- **Tests:** `pytest` (no API calls; the app run uses the mock and temporary files).
 
-## Bekannte Grenzen & nächste Schritte
+## Known limitations & next steps
 
-- **Ablation der Prompt-Änderungen:** jede der vier v2-Änderungen einzeln weglassen und messen – welche bringt wie viel?
-- **Mehr Läufe:** belastbarere Aussagen zu Stabilität und zu low vs. medium.
-- **Schweregrad beim Compliance-Flag:** heute nur ja/nein – ein klarer DSGVO-Verstoß und ein „bitte kurz prüfen“ sehen gleich aus.
-- **Mehrbenutzer-Abstimmung:** Korrekturen und Prüfentscheidungen pro Person, Konsens bzw. Abweichungen sichtbar machen.
-- **Freigegebenes Modell im Konzern:** Ideen können interne Informationen enthalten – produktiv nur über ein vom Unternehmen freigegebenes Modell bzw. eine freigegebene Plattform.
-- **Next.js statt Streamlit** für ein echtes Team-Tool (Login, gleichzeitige Nutzung, eigenes Backend); Streamlit war für den Prototyp der schnellste Weg.
-- Speicherung als einzelne JSON-Datei – für mehrere gleichzeitige Nutzer bräuchte es eine Datenbank.
+- **Ablation of the prompt changes:** leave out each of the four v2 changes individually and measure – which one contributes how much?
+- **More runs:** more reliable statements about stability and about low vs. medium.
+- **Severity for the compliance flag:** currently only yes/no – a clear GDPR violation and a "please check briefly" look the same.
+- **Multi-user voting:** corrections and review decisions per person, making consensus and disagreement visible.
+- **Approved model in a corporate setting:** ideas may contain internal information – in production only via a model or platform approved by the company.
+- **Next.js instead of Streamlit** for a real team tool (login, concurrent use, own backend); Streamlit was the fastest route for the prototype.
+- Storage as a single JSON file – multiple concurrent users would need a database.
