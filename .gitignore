@@ -1,0 +1,22 @@
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+data/state.json
+data/state.backup.json
+.DS_Store
+
+# Lokale Exporte und Editor-Einstellungen
+/*.csv
+.vscode/
+
+# Persönliche Arbeitsunterlagen (nur lokal): Erklärungen, Entwicklungsprotokoll,
+# Aufträge an Claude Code, Präsentationsvorbereitung
+CLAUDE.md
+AI_LOG.md
+docs/CODE_ERKLAERUNG.md
+docs/DEMO_CHECKLISTE.md
+docs/prompts/*
+# … aber die System-Prompts der App bleiben im Repo
+!docs/prompts/Systemprompts/
+/*.pdf

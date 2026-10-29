@@ -1,0 +1,973 @@
+{
+  "config": {
+    "label": "v2_low",
+    "prompt_version": "v2",
+    "effort": "low",
+    "model": "claude-haiku-5-5",
+    "run_count": 3,
+    "sdk_version": "2.3.0",
+    "started_at": "2026-10-25T15:25:42.696066+01:00"
+  },
+  "ideas": [
+    {
+      "id": "ex-01",
+      "title": "Meeting-Zeiten reduzieren",
+      "description": "Regelmeetings kürzen (z. B. 25 statt 30 Minuten) und nur mit Agenda abhalten."
+    },
+    {
+      "id": "ex-02",
+      "title": "Wissensdatenbank verbessern",
+      "description": "Bestehendes Wiki aufräumen, Struktur vereinheitlichen und die Suche verbessern."
+    },
+    {
+      "id": "ex-03",
+      "title": "Onboarding automatisieren",
+      "description": "Zugänge, Checklisten und Einführungs-Termine für neue Kolleg:innen automatisch anstoßen."
+    },
+    {
+      "id": "ex-04",
+      "title": "AI-Assistent für Support-Anfragen",
+      "description": "Ein KI-Assistent schlägt Antworten auf eingehende Kunden-Support-Anfragen vor."
+    },
+    {
+      "id": "ex-05",
+      "title": "Automatische Dokumentation",
+      "description": "Technische Dokumentation wird automatisch aus Code, Tickets und Konfigurationen erzeugt."
+    },
+    {
+      "id": "ex-06",
+      "title": "Tool-Landschaft vereinfachen",
+      "description": "Überlappende Tools konsolidieren, sodass pro Aufgabe nur noch ein Werkzeug genutzt wird."
+    },
+    {
+      "id": "ex-07",
+      "title": "Automatisiertes Reporting",
+      "description": "Dashboards mit automatisch aktualisierten Kennzahlen ersetzen manuell erstellte Excel-Reports."
+    },
+    {
+      "id": "ex-08",
+      "title": "Feste Fokuszeiten ohne Meetings",
+      "description": "Zwei feste Blöcke pro Woche, in denen teamweit keine Meetings stattfinden."
+    },
+    {
+      "id": "ex-09",
+      "title": "Self-Service für IT-Standardanfragen",
+      "description": "Häufige IT-Anfragen wie Passwort-Reset oder Software-Freigaben über ein Self-Service-Portal abwickeln."
+    },
+    {
+      "id": "ex-10",
+      "title": "Vorlagen für wiederkehrende Aufgaben",
+      "description": "Gemeinsame Vorlagen für Protokolle, Statusberichte und Standard-E-Mails bereitstellen."
+    }
+  ],
+  "runs": [
+    {
+      "evaluations": [
+        {
+          "assumption": "Regelmäßige Teammeetings werden auf 25 Minuten gekürzt und nur noch mit vorab festgelegter Agenda abgehalten.",
+          "impact": {
+            "reasoning": "Jede Woche gewonnene Minuten pro Person sind spürbar, aber die Ersparnis bleibt mit 5 Minuten pro Meeting klein.",
+            "score": 2
+          },
+          "reach": {
+            "reasoning": "Alle Teilnehmenden regelmäßiger Meetings profitieren, und diese Meetings finden typischerweise mehrmals pro Woche bis wöchentlich statt.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Die Umstellung erfordert nur eine Absprache im Team und das Erstellen von Agenden, ohne Kosten oder neue Tools.",
+            "score": 1
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz ist unsicher, da einige Teilnehmende die Kürzung als Druck empfinden oder bei komplexen Themen zu wenig Zeit sehen könnten.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-01",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:45.938406+01:00"
+        },
+        {
+          "assumption": "Das bestehende Team-Wiki wird aufgeräumt, die Seitenstruktur vereinheitlicht und die Suchfunktion verbessert, ohne ein neues Tool einzuführen.",
+          "impact": {
+            "reasoning": "Eine bessere Suche und klare Struktur sparen bei jeder Informationssuche spürbar Zeit und reduzieren wiederkehrende Ärgernisse.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Das gesamte Team greift regelmäßig auf das Wiki zu, sodass die Verbesserung fast alle betrifft, wenn auch nicht täglich bei jedem.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Aufräumen und Strukturieren bindet mehrere Beteiligte über einige Wochen, die Suchverbesserung kann je nach Wiki-Software zusätzliche Konfiguration erfordern.",
+            "score": 3
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz hängt davon ab, ob Teammitglieder die neue Struktur übernehmen, und die Suchverbesserung kann von der eingesetzten Wiki-Software abhängen.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-02",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:46.283269+01:00"
+        },
+        {
+          "assumption": "Beim Eintritt neuer Mitarbeitender werden Zugänge, Onboarding-Checklisten und Einführungstermine automatisch angestoßen, statt manuell angelegt.",
+          "impact": {
+            "reasoning": "Spart bei jedem Eintritt viel manuelle Koordination und sorgt dafür, dass nichts vergessen wird, was den Einstieg spürbar verbessert.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Betrifft vor allem die Personen, die Onboardings betreuen, und neue Kolleg:innen, aber nur bei Neueinstellungen und nicht täglich.",
+            "score": 2
+          },
+          "effort": {
+            "reasoning": "Anbindung an Account-Verwaltung, Kalender und Checklisten-Tools erfordert mehrere Beteiligte und Monate Arbeit.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Automatisierung hängt von Zugriffen auf mehrere Fremdsysteme ab, und die Abläufe der Abteilungen müssen zusammenpassen.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Informationssicherheit",
+              "Datenschutz (DSGVO)"
+            ],
+            "note": "Das automatische Anlegen von Zugängen erfordert Zugriff auf sensible Systeme und verarbeitet personenbezogene Daten neuer Mitarbeitender."
+          },
+          "idea_id": "ex-03",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:47.343032+01:00"
+        },
+        {
+          "assumption": "Ein KI-Assistent generiert Antwortvorschläge für eingehende Kunden-Support-Anfragen, die Mitarbeitende prüfen und versenden.",
+          "impact": {
+            "reasoning": "Antwortvorschläge verkürzen die Bearbeitungszeit jeder Support-Anfrage spürbar und beseitigen wiederkehrenden Aufwand für Standardfragen.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Alle Support-Mitarbeitenden bearbeiten Kundenanfragen täglich, sodass die Verbesserung regelmäßig anfällt.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Auswahl eines KI-Dienstes, Anbindung an das Ticketsystem und Einrichtung der Wissensbasis dauern mehrere Wochen bis Monate mit mehreren Beteiligten.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Qualität der Vorschläge ist unsicher und hängt von Wissensbasis, Anbindung und der Akzeptanz der Mitarbeitenden ab.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Externe KI-/Cloud-Dienste",
+              "Datenschutz (DSGVO)"
+            ],
+            "note": "Ein KI-Assistent verarbeitet Kundenanfragen, die personenbezogene Daten enthalten, und nutzt dafür typischerweise einen externen KI-Dienst."
+          },
+          "idea_id": "ex-04",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:45.731942+01:00"
+        },
+        {
+          "assumption": "Technische Dokumentation wird automatisch aus Code, Tickets und Konfigurationen generiert, sodass manuelles Pflegen entfällt.",
+          "impact": {
+            "reasoning": "Manuelles Dokumentieren entfällt weitgehend und die Dokumentation bleibt aktuell, was eine spürbare Zeitersparnis und Qualitätsverbesserung bringt, aber den zentralen Ablauf nicht grundlegend verändert.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Entwickler und Betreiber, die Dokumentation lesen oder pflegen, profitieren regelmäßig, betrifft aber nicht zwingend das ganze Team täglich.",
+            "score": 3
+          },
+          "effort": {
+            "reasoning": "Die Anbindung an Code-Repository, Ticketsystem und Konfigurationen erfordert mehrere Beteiligte und Integration in bestehende Systeme über einige Monate.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Qualität der automatisch erzeugten Texte ist unsicher und hängt von Abhängigkeiten zu mehreren Systemen und der Disziplin bei Tickets und Code-Kommentaren ab.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-05",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:46.809171+01:00"
+        },
+        {
+          "assumption": "Überlappende Werkzeuge im Team werden zusammengeführt, sodass für jede Aufgabe nur noch ein festes Tool genutzt wird.",
+          "impact": {
+            "reasoning": "Weniger Werkzeuge bedeuten weniger Kontextwechsel und Suchaufwand, was im Alltag spürbar Zeit spart, aber die genaue Ersparnis hängt von den betroffenen Abläufen ab.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Alle Teammitglieder nutzen die betroffenen Werkzeuge regelmäßig, sodass die Vereinfachung das ganze Team täglich berührt.",
+            "score": 5
+          },
+          "effort": {
+            "reasoning": "Die Bestandsaufnahme, Abstimmung der Teams und Migration von Daten und Gewohnheiten dauern vermutlich mehrere Wochen bis Monate mit mehreren Beteiligten.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Der Erfolg hängt davon ab, ob sich alle Beteiligten auf ein gemeinsames Werkzeug einigen und gewohnte Tools tatsächlich aufgeben.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-06",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:48.723028+01:00"
+        },
+        {
+          "assumption": "Dashboards mit automatisch aktualisierten Kennzahlen ersetzen die bisher manuell in Excel erstellten Reports des Teams.",
+          "impact": {
+            "reasoning": "Das manuelle Erstellen und Aktualisieren der Excel-Reports entfällt, was regelmäßig mehrere Stunden pro Person und Woche spart und die Aktualität der Kennzahlen verbessert.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Alle, die Reports erstellen oder auf Kennzahlen zugreifen, profitieren regelmäßig, also ein großer Teil des Teams.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Aufbau der Dashboards, Datenanbindung und Abstimmung der Kennzahlen dauern typischerweise mehrere Wochen mit mehreren Beteiligten und ein neues Tool.",
+            "score": 3
+          },
+          "risk": {
+            "reasoning": "Die Datenquellen müssen zuverlässig angebunden werden, und die Akzeptanz hängt davon ab, ob die Kennzahlen den bisherigen Reports fachlich entsprechen.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-07",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:48.811737+01:00"
+        },
+        {
+          "assumption": "Das Team führt zwei feste wöchentliche Zeitblöcke ein, in denen keine Meetings stattfinden, damit konzentriertes Arbeiten möglich ist.",
+          "impact": {
+            "reasoning": "Zwei ungestörte Blöcke pro Woche verbessern die Konzentration spürbar und beseitigen ein wiederkehrendes Ärgernis durch Unterbrechungen, auch wenn es keine direkte Zeitersparnis im engeren Sinn ist.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Das ganze Team ist betroffen und profitiert jede Woche zweimal von den meetingfreien Blöcken.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Die Einführung ist eine Vereinbarung im Team, die ohne Kosten oder neue Tools sofort umsetzbar ist, benötigt aber Abstimmung mit allen Beteiligten.",
+            "score": 1
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz ist unsicher, da Meetings oft von externen Terminen und anderen Teams abhängen, die sich nicht immer an die Blöcke halten.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-08",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:51.198606+01:00"
+        },
+        {
+          "assumption": "Häufige IT-Standardanfragen wie Passwort-Reset und Software-Freigaben werden über ein Self-Service-Portal ohne manuelle Bearbeitung durch die IT abgewickelt.",
+          "impact": {
+            "reasoning": "Wiederkehrende Standardanfragen entfallen für die IT und Anfragende, was spürbar Zeit spart und Wartezeiten verkürzt, aber keinen grundlegenden Ablauf verändert.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Passwort-Resets und Software-Freigaben betreffen nahezu das ganze Team, treten aber nicht täglich bei jedem auf.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Portal-Einrichtung, Workflows für Freigaben und Anbindung an Active Directory und Software-Verwaltung dauern mehrere Wochen bis Monate mit mehreren Beteiligten.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Der Erfolg hängt von Akzeptanz der Nutzenden und der Anbindung an bestehende IT-Systeme ab, und Freigabeprozesse müssen sauber abgebildet werden.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Informationssicherheit"
+            ],
+            "note": "Passwort-Resets und Freigaben gewähren Zugriff auf sensible Systeme und Konten, weshalb die Identitätsprüfung und Berechtigungsvergabe abgesichert sein müssen."
+          },
+          "idea_id": "ex-09",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:49.522629+01:00"
+        },
+        {
+          "assumption": "Ein gemeinsamer Satz wiederverwendbarer Vorlagen für Protokolle, Statusberichte und Standard-E-Mails wird im Team bereitgestellt.",
+          "impact": {
+            "reasoning": "Wiederkehrende Dokumente müssen nicht mehr jedes Mal neu aufgebaut werden, was regelmäßig etwa eine halbe bis eine Stunde pro Person und Woche spart.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Alle, die Protokolle, Statusberichte oder Standard-E-Mails schreiben, nutzen die Vorlagen mehrmals pro Woche, also ein Teil bis fast das ganze Team.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Die Vorlagen lassen sich mit wenigen Beteiligten in etwa ein bis zwei Wochen ohne Kosten oder neue Tools erstellen und abstimmen.",
+            "score": 2
+          },
+          "risk": {
+            "reasoning": "Die Umsetzung ist unkompliziert, offen bleibt aber, ob sich das Team auf einheitliche Formate einigt und sie tatsächlich nutzt.",
+            "score": 2
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-10",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:51.133999+01:00"
+        }
+      ],
+      "failures": [],
+      "usage": {
+        "api_calls": 10,
+        "invalid_responses": {},
+        "input_tokens": 40803,
+        "output_tokens": 4666,
+        "calls_without_usage": 0,
+        "call_seconds": 35.887719499878585,
+        "wall_seconds": 8.503179082646966
+      }
+    },
+    {
+      "evaluations": [
+        {
+          "assumption": "Regelmäßige Team-Meetings werden auf 25 Minuten gekürzt und nur noch mit vorab festgelegter Agenda abgehalten.",
+          "impact": {
+            "reasoning": "Fünf Minuten weniger pro Meeting und eine klare Agenda sparen regelmäßig spürbar Zeit, lösen aber kein grundlegendes Problem.",
+            "score": 2
+          },
+          "reach": {
+            "reasoning": "Alle Teilnehmenden der Regelmeetings sind betroffen, und diese finden typischerweise wöchentlich statt.",
+            "score": 3
+          },
+          "effort": {
+            "reasoning": "Die Umstellung erfordert nur die Abstimmung im Team und eine Anpassung der Terminserien, ohne Kosten oder neue Tools.",
+            "score": 1
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz ist unklar, da manche Meetings für 30 Minuten geplant sind und Agenden erfahrungsgemäß nicht immer eingehalten werden.",
+            "score": 2
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-01",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:53.857427+01:00"
+        },
+        {
+          "assumption": "Das bestehende Team-Wiki wird aufgeräumt, die Seitenstruktur vereinheitlicht und die Suchfunktion verbessert, damit Informationen schneller gefunden werden.",
+          "impact": {
+            "reasoning": "Schnelleres Auffinden von Informationen spart bei wiederkehrender Suche spürbar Zeit und beseitigt ein häufiges Ärgernis.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Alle Teammitglieder nutzen das Wiki gelegentlich bis regelmäßig, daher profitiert ein großer Teil des Teams.",
+            "score": 3
+          },
+          "effort": {
+            "reasoning": "Aufräumen und Vereinheitlichen erfordern mehrere Wochen Arbeit mehrerer Beteiligter, die Suchverbesserung kann je nach Wiki-Software zusätzliche Konfiguration brauchen.",
+            "score": 3
+          },
+          "risk": {
+            "reasoning": "Der Erfolg hängt davon ab, ob Teammitglieder neue Strukturregeln annehmen und die Suchverbesserung mit der bestehenden Wiki-Software umsetzbar ist.",
+            "score": 2
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-02",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:54.449024+01:00"
+        },
+        {
+          "assumption": "Beim Eintritt neuer Kolleg:innen werden Zugänge, Onboarding-Checklisten und Einführungstermine automatisch ausgelöst, statt manuell angestoßen zu werden.",
+          "impact": {
+            "reasoning": "Spart jedes Mal mehrere Stunden manueller Koordination und sorgt für einen verlässlicheren Einstieg neuer Kolleg:innen.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Betrifft die Personen, die Onboardings anstoßen, sowie alle neuen Kolleg:innen, aber nur bei Neueinstellungen und damit nicht täglich.",
+            "score": 2
+          },
+          "effort": {
+            "reasoning": "Die Anbindung an Account-Verwaltung, Kalender und Checklistensystem erfordert mehrere Beteiligte und Schnittstellen über ein bis drei Monate.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Automatisierung hängt von IT- und HR-Systemen anderer Bereiche ab, und Zugangsrechte müssen korrekt vergeben werden.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Informationssicherheit",
+              "Datenschutz (DSGVO)"
+            ],
+            "note": "Die automatische Vergabe von Zugängen betrifft sensible Systeme, und die Verarbeitung personenbezogener Daten neuer Mitarbeitender ist zwingend erforderlich."
+          },
+          "idea_id": "ex-03",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:55.076786+01:00"
+        },
+        {
+          "assumption": "Ein KI-Assistent generiert Antwortvorschläge zu eingehenden Kunden-Support-Anfragen, die Mitarbeitende prüfen und versenden.",
+          "impact": {
+            "reasoning": "Antwortvorschläge verkürzen die Bearbeitungszeit jeder Support-Anfrage spürbar und vereinheitlichen die Qualität der Antworten.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Alle Mitarbeitenden im Support bearbeiten Kundenanfragen täglich, wodurch der Assistent regelmäßig genutzt wird.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Auswahl eines KI-Dienstes, Anbindung an das Ticketsystem und Einarbeitung dauern mehrere Wochen mit mehreren Beteiligten und verursachen Lizenzkosten.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Qualität der Vorschläge ist unsicher und hängt von Trainingsdaten, Wissensbasis und der Akzeptanz des Supports ab.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Datenschutz (DSGVO)",
+              "Externe KI-/Cloud-Dienste"
+            ],
+            "note": "Kundenanfragen enthalten personenbezogene Daten und werden zur Erzeugung der Vorschläge an einen KI-Dienst übermittelt."
+          },
+          "idea_id": "ex-04",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:56.506491+01:00"
+        },
+        {
+          "assumption": "Technische Dokumentation wird automatisch aus Quellcode, Tickets und Konfigurationen generiert, sodass manuelle Pflege entfällt.",
+          "impact": {
+            "reasoning": "Spart regelmäßig Pflegeaufwand und hält Dokumentation aktuell, was ein wiederkehrendes Ärgernis beseitigt, aber keinen zentralen Ablauf grundlegend verändert.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Betrifft vor allem Entwickelnde und Betreibende, die regelmäßig mit Code, Tickets und Konfigurationen arbeiten, also einen Teil des Teams regelmäßig.",
+            "score": 3
+          },
+          "effort": {
+            "reasoning": "Anbindung mehrerer Quellen wie Code-Repository, Ticketsystem und Konfigurationen erfordert mehrere Beteiligte und mehrere Wochen Arbeit.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Qualität generierter Texte ist unsicher und die Umsetzung hängt von Schnittstellen und Zugriffen auf mehrere Systeme anderer Teams ab.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Informationssicherheit"
+            ],
+            "note": "Die automatische Auswertung von Konfigurationen und Tickets erfordert Zugriff auf sensible Systeme und Daten, die in der Dokumentation auftauchen können."
+          },
+          "idea_id": "ex-05",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:54.970541+01:00"
+        },
+        {
+          "assumption": "Überlappende Werkzeuge im Team werden zusammengeführt, sodass für jede Aufgabe nur noch ein Tool genutzt wird.",
+          "impact": {
+            "reasoning": "Weniger Werkzeugwechsel und kein Suchen nach dem richtigen Tool sparen dem Team spürbar Zeit, ohne die Abläufe grundlegend zu verändern.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Alle Teammitglieder, die heute mehrere überlappende Tools nutzen, sind betroffen und arbeiten damit täglich.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Bestandsaufnahme, Auswahl und Migration über mehrere Tools und Beteiligte dauern voraussichtlich einige Wochen bis Monate.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz ist unsicher, da Gewohnheiten aufgegeben werden müssen und Datenmigrationen an anderen Systemen hängen können.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-06",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:56.585626+01:00"
+        },
+        {
+          "assumption": "Dashboards mit automatisch aktualisierten Kennzahlen ersetzen die bisher manuell in Excel erstellten Reports des Teams.",
+          "impact": {
+            "reasoning": "Das manuelle Erstellen und Aktualisieren der Excel-Reports entfällt, was regelmäßig mehrere Stunden pro Person und Woche spart und die Aktualität der Kennzahlen verbessert.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Alle, die Reports erstellen oder nutzen, profitieren regelmäßig, also ein großer Teil des Teams.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Aufbau der Datenanbindung und der Dashboards dauert einige Wochen bis Monate und erfordert mehrere Beteiligte sowie die Anbindung an bestehende Datenquellen.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz hängt davon ab, ob die gewohnten Excel-Reports tatsächlich abgelöst werden, und die Datenqualität der Quellsysteme ist offen.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-07",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:57.911439+01:00"
+        },
+        {
+          "assumption": "Das Team richtet zwei feste wöchentliche Zeitblöcke ein, in denen keine Meetings stattfinden, damit ungestörtes Arbeiten möglich ist.",
+          "impact": {
+            "reasoning": "Zwei ungestörte Blöcke pro Woche verbessern die Konzentrationsarbeit spürbar, ersetzen aber nicht grundlegend die Abläufe.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Das ganze Team profitiert, und zwar zweimal pro Woche.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Die Regel lässt sich ohne Kosten, Tools oder Systemanbindung mit einer Teamabsprache in wenigen Tagen umsetzen.",
+            "score": 1
+          },
+          "risk": {
+            "reasoning": "Der Erfolg hängt davon ab, ob Kolleginnen und Kollegen und Stakeholder die Blöcke akzeptieren und einhalten, was erfahrungsgemäß nicht sicher ist.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-08",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:57.932277+01:00"
+        },
+        {
+          "assumption": "Häufige IT-Standardanfragen wie Passwort-Reset und Software-Freigaben werden über ein Self-Service-Portal ohne manuelle Bearbeitung durch die IT abgewickelt.",
+          "impact": {
+            "reasoning": "Wiederkehrende Standardanfragen entfallen für die IT und die Anfragenden spart jede Anfrage spürbar Wartezeit, was einen regelmäßigen Ärgernispunkt beseitigt.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Passwort-Resets und Freigaben betreffen fast das ganze Team mehrmals pro Woche, da jeder Mitarbeitende solche Anfragen stellt.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Einrichtung eines Portals, Anbindung an Active Directory und Freigabe-Workflows dauern mehrere Wochen bis Monate mit mehreren Beteiligten.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Akzeptanz bei Nutzenden ist plausibel, hängt aber von Anbindung an bestehende Identitätssysteme und Freigabeprozesse anderer Stellen ab.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Informationssicherheit"
+            ],
+            "note": "Das Portal erhält Zugriff auf Konten und Berechtigungen (Passwort-Reset, Softwarefreigaben), also auf sensible Systeme."
+          },
+          "idea_id": "ex-09",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:58.451591+01:00"
+        },
+        {
+          "assumption": "Das Team stellt gemeinsame, wiederverwendbare Vorlagen für Protokolle, Statusberichte und Standard-E-Mails bereit, damit diese wiederkehrenden Texte nicht jedes Mal neu aufgebaut werden.",
+          "impact": {
+            "reasoning": "Wiederkehrende Dokumente müssen nicht mehr von Grund auf erstellt werden, was regelmäßig etwa eine halbe Stunde pro Person und Woche spart.",
+            "score": 2
+          },
+          "reach": {
+            "reasoning": "Alle, die Protokolle, Statusberichte oder Standard-E-Mails schreiben, nutzen die Vorlagen regelmäßig, was einen Teil des Teams betrifft.",
+            "score": 3
+          },
+          "effort": {
+            "reasoning": "Die Vorlagen lassen sich in ein bis zwei Wochen von einer oder zwei Personen ohne Kosten oder neue Tools erstellen.",
+            "score": 2
+          },
+          "risk": {
+            "reasoning": "Der Nutzen hängt davon ab, ob sich das Team auf gemeinsame Formate einigt und diese auch verwendet, was mäßige Akzeptanzfragen aufwirft.",
+            "score": 2
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-10",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:25:59.373998+01:00"
+        }
+      ],
+      "failures": [],
+      "usage": {
+        "api_calls": 10,
+        "invalid_responses": {},
+        "input_tokens": 40803,
+        "output_tokens": 4585,
+        "calls_without_usage": 0,
+        "call_seconds": 34.235960540827364,
+        "wall_seconds": 8.175326582975686
+      }
+    },
+    {
+      "evaluations": [
+        {
+          "assumption": "Regelmäßige Team-Meetings werden auf 25 Minuten verkürzt und nur noch mit vorab festgelegter Agenda durchgeführt.",
+          "impact": {
+            "reasoning": "Fünf Minuten weniger pro Meeting und eine klarere Struktur sparen regelmäßig spürbar Zeit, lösen aber keinen zentralen Engpass.",
+            "score": 2
+          },
+          "reach": {
+            "reasoning": "Alle Teilnehmenden der Regelmeetings sind betroffen, und diese finden typischerweise mehrmals pro Woche statt.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Die Umstellung erfordert nur eine Abstimmung im Team und das Erstellen einer Agenda-Vorlage, ohne Kosten oder Tools.",
+            "score": 1
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz ist unsicher, da manche Teilnehmende kürzere Zeitfenster als Druck empfinden oder wichtige Themen zu kurz kommen könnten.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-01",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:03.064238+01:00"
+        },
+        {
+          "assumption": "Das bestehende interne Wiki wird aufgeräumt, die Seitenstruktur vereinheitlicht und die Suchfunktion verbessert, sodass Informationen schneller gefunden werden.",
+          "impact": {
+            "reasoning": "Schnelleres Auffinden von Informationen beseitigt ein wiederkehrendes Ärgernis und spart regelmäßig Suchzeit im Arbeitsalltag.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Alle Teammitglieder, die im Wiki nach Informationen suchen, profitieren, was voraussichtlich mehrmals pro Woche geschieht.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Aufräumen, Vereinheitlichen und Suchkonfiguration erfordern mehrere Wochen Arbeit mehrerer Beteiligter, ohne Angabe neuer Lizenzen.",
+            "score": 3
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz hängt davon ab, ob bestehende Seiten und Gewohnheiten der Nutzenden bei der Umstrukturierung berücksichtigt werden, und die Suchverbesserung kann von der eingesetzten Wiki-Technik abhängen.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-02",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:02.548432+01:00"
+        },
+        {
+          "assumption": "Beim Eintritt neuer Kolleg:innen werden Zugänge, Onboarding-Checklisten und Einführungstermine automatisch ausgelöst, statt manuell angestoßen zu werden.",
+          "impact": {
+            "reasoning": "Spart bei jedem Neuzugang viele manuelle Schritte und verbessert den Ablauf des Einstiegs deutlich, ohne zentrale Abläufe grundlegend umzubauen.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Betrifft vor allem neue Kolleg:innen und die Personen, die das Onboarding begleiten, also nur einen Teil des Teams und nur gelegentlich.",
+            "score": 2
+          },
+          "effort": {
+            "reasoning": "Die Anbindung an Konten- und Terminsysteme sowie die Checklisten-Logik erfordern mehrere Beteiligte und mehrere Wochen Arbeit.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Automatisierung hängt von den Zugangssystemen der IT und den Terminkalendern anderer Abteilungen ab, was Abhängigkeiten schafft.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Informationssicherheit",
+              "Datenschutz (DSGVO)"
+            ],
+            "note": "Die automatische Einrichtung von Zugängen verarbeitet personenbezogene Daten neuer Mitarbeitender und berührt sensible Systeme."
+          },
+          "idea_id": "ex-03",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:02.957813+01:00"
+        },
+        {
+          "assumption": "Ein KI-Assistent generiert Antwortvorschläge für eingehende Kunden-Support-Anfragen, die Mitarbeitende prüfen und versenden.",
+          "impact": {
+            "reasoning": "Antwortvorschläge verkürzen die Bearbeitungszeit jeder Support-Anfrage spürbar und erleichtern die Arbeit im Kundenservice erheblich.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Alle Support-Mitarbeitenden bearbeiten Kundenanfragen täglich und profitieren direkt davon.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Auswahl eines KI-Dienstes, Anbindung an das Ticketsystem und Einführung dauern mehrere Wochen mit mehreren Beteiligten und verursachen Lizenzkosten.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Qualität der Vorschläge ist unsicher und die Akzeptanz im Team hängt davon ab, wie verlässlich die Antworten sind.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Datenschutz (DSGVO)",
+              "Externe KI-/Cloud-Dienste"
+            ],
+            "note": "Kundenanfragen enthalten personenbezogene Daten, die an einen KI-Dienst übermittelt werden, der für die Antwortgenerierung nötig ist."
+          },
+          "idea_id": "ex-04",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:02.064091+01:00"
+        },
+        {
+          "assumption": "Technische Dokumentation wird automatisch aus Code, Tickets und Konfigurationen generiert, sodass manuelles Dokumentieren entfällt.",
+          "impact": {
+            "reasoning": "Spart regelmäßig Zeit beim Pflegen der Dokumentation und verbessert die Aktualität, betrifft aber keinen zentralen Engpass allein.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Betrifft alle, die Technik entwickeln, betreiben oder nachschlagen, und wird damit mehrmals pro Woche genutzt.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Anbindung mehrerer Quellen wie Code-Repository, Ticketsystem und Konfigurationen über bestehende Systeme erfordert mehrere Beteiligte über einige Monate.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Die Qualität der generierten Texte ist unsicher und hängt von Abhängigkeiten zu mehreren Systemen und der Disziplin bei Tickets und Code-Kommentaren ab.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-05",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:03.049069+01:00"
+        },
+        {
+          "assumption": "Mehrere überlappende Werkzeuge für dieselben Aufgaben werden zusammengeführt, sodass pro Aufgabe nur noch ein Tool genutzt wird.",
+          "impact": {
+            "reasoning": "Weniger doppelte Tools reduzieren Suchen, Umgewöhnen und Datenpflege in mehreren Systemen, was im Arbeitsalltag spürbar, aber nicht grundlegend entlastet.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Die Konsolidierung betrifft alle, die die überlappenden Tools heute täglich parallel nutzen, also vermutlich einen großen Teil des Teams.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Bestandsaufnahme, Auswahl, Datenmigration und Umstellung mehrerer Tools dauern voraussichtlich mehrere Wochen bis Monate mit mehreren Beteiligten.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Akzeptanz ist unsicher, da Teams an gewohnten Werkzeugen hängen und Migrationen Abhängigkeiten von anderen Systemen und Teams mit sich bringen.",
+            "score": 4
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-06",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:05.621564+01:00"
+        },
+        {
+          "assumption": "Dashboards mit automatisch aktualisierten Kennzahlen ersetzen die bisher manuell erstellten Excel-Reports des Teams.",
+          "impact": {
+            "reasoning": "Das manuelle Erstellen und Aktualisieren der Excel-Reports entfällt, was regelmäßig mehrere Stunden pro Person und Woche spart und die Qualität der Kennzahlen verbessert.",
+            "score": 4
+          },
+          "reach": {
+            "reasoning": "Alle, die Reports erstellen oder lesen, profitieren regelmäßig, was einen großen Teil des Teams betrifft.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Die Anbindung der Datenquellen und der Aufbau der Dashboards dauern einige Wochen bis wenige Monate mit mehreren Beteiligten und wahrscheinlich einem neuen BI-Tool.",
+            "score": 3
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz der Dashboards ist offen, und die Datenqualität sowie die Anbindung an Quellsysteme sind abhängig von anderen Teams.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-07",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:05.622576+01:00"
+        },
+        {
+          "assumption": "Das Team richtet zwei feste wöchentliche Zeitblöcke ein, in denen keine Meetings stattfinden, damit ungestört gearbeitet werden kann.",
+          "impact": {
+            "reasoning": "Zwei ungestörte Blöcke pro Woche verschaffen konzentrierte Arbeitszeit, die bei häufigen Unterbrechungen spürbar fehlt, was einem wiederkehrenden Ärgernis entgegenwirkt.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Das ganze Team profitiert, und zwar zweimal pro Woche in den festen Blöcken.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Eine Abstimmung im Team und eine Anpassung der Kalender ist mit geringem Aufwand in wenigen Tagen ohne Kosten möglich.",
+            "score": 1
+          },
+          "risk": {
+            "reasoning": "Die Akzeptanz ist unklar, weil Meetings oft kurzfristig nötig sind und Kollegen oder externe Stellen die Blöcke eventuell nicht respektieren.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-08",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:05.699260+01:00"
+        },
+        {
+          "assumption": "Häufige IT-Standardanfragen wie Passwort-Reset und Software-Freigaben werden über ein Self-Service-Portal ohne manuelle Bearbeitung durch die IT abgewickelt.",
+          "impact": {
+            "reasoning": "Wiederkehrende Standardanfragen entfallen für die IT und Anfragende werden schneller bedient, was eine spürbare regelmäßige Zeitersparnis bringt, aber keinen grundlegenden Engpass löst.",
+            "score": 3
+          },
+          "reach": {
+            "reasoning": "Passwort-Resets und Software-Freigaben betreffen praktisch das ganze Team, allerdings nicht täglich bei allen.",
+            "score": 4
+          },
+          "effort": {
+            "reasoning": "Einrichtung eines Portals, Anbindung an Active Directory und Freigabe-Workflows erfordern mehrere Beteiligte über einige Wochen bis Monate, oft mit neuer Lizenz.",
+            "score": 4
+          },
+          "risk": {
+            "reasoning": "Akzeptanz der Nutzenden und die Anbindung an bestehende Identitäts- und Berechtigungssysteme sind wesentliche Unsicherheiten.",
+            "score": 3
+          },
+          "compliance": {
+            "flag": true,
+            "categories": [
+              "Informationssicherheit"
+            ],
+            "note": "Passwort-Resets und Freigaben greifen auf sensible Identitäts- und Berechtigungssysteme zu."
+          },
+          "idea_id": "ex-09",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:05.973288+01:00"
+        },
+        {
+          "assumption": "Das Team stellt gemeinsame, wiederverwendbare Vorlagen für Protokolle, Statusberichte und Standard-E-Mails bereit, damit diese wiederkehrenden Dokumente nicht jedes Mal neu aufgebaut werden.",
+          "impact": {
+            "reasoning": "Wiederkehrende Dokumente sind schneller erstellt und einheitlicher, was spürbar Zeit spart, aber pro Person meist nur einige Minuten pro Anlass ausmacht.",
+            "score": 2
+          },
+          "reach": {
+            "reasoning": "Protokolle, Statusberichte und Standard-E-Mails werden von vielen im Team regelmäßig genutzt, also von einem großen Teil des Teams wiederholt.",
+            "score": 3
+          },
+          "effort": {
+            "reasoning": "Die Vorlagen lassen sich mit einer Person in etwa ein bis zwei Wochen ohne Kosten oder neue Tools erstellen und abstimmen.",
+            "score": 2
+          },
+          "risk": {
+            "reasoning": "Die Umsetzung ist unkompliziert, offen ist nur, ob sich das Team auf einheitliche Vorlagen einigt und sie tatsächlich nutzt.",
+            "score": 2
+          },
+          "compliance": {
+            "flag": false,
+            "categories": [],
+            "note": ""
+          },
+          "idea_id": "ex-10",
+          "source": "llm",
+          "model": "claude-haiku-5-5",
+          "evaluated_at": "2026-10-25T15:26:11.055415+01:00"
+        }
+      ],
+      "failures": [],
+      "usage": {
+        "api_calls": 10,
+        "invalid_responses": {},
+        "input_tokens": 40803,
+        "output_tokens": 4569,
+        "calls_without_usage": 0,
+        "call_seconds": 37.074868123978376,
+        "wall_seconds": 11.681233374867588
+      }
+    }
+  ]
+}

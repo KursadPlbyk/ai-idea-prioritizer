@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ex-01",
+    "title": "Meeting-Zeiten reduzieren",
+    "description": "Regelmeetings kürzen (z. B. 25 statt 30 Minuten) und nur mit Agenda abhalten."
+  },
+  {
+    "id": "ex-02",
+    "title": "Wissensdatenbank verbessern",
+    "description": "Bestehendes Wiki aufräumen, Struktur vereinheitlichen und die Suche verbessern."
+  },
+  {
+    "id": "ex-03",
+    "title": "Onboarding automatisieren",
+    "description": "Zugänge, Checklisten und Einführungs-Termine für neue Kolleg:innen automatisch anstoßen."
+  },
+  {
+    "id": "ex-04",
+    "title": "AI-Assistent für Support-Anfragen",
+    "description": "Ein KI-Assistent schlägt Antworten auf eingehende Kunden-Support-Anfragen vor."
+  },
+  {
+    "id": "ex-05",
+    "title": "Automatische Dokumentation",
+    "description": "Technische Dokumentation wird automatisch aus Code, Tickets und Konfigurationen erzeugt."
+  },
+  {
+    "id": "ex-06",
+    "title": "Tool-Landschaft vereinfachen",
+    "description": "Überlappende Tools konsolidieren, sodass pro Aufgabe nur noch ein Werkzeug genutzt wird."
+  },
+  {
+    "id": "ex-07",
+    "title": "Automatisiertes Reporting",
+    "description": "Dashboards mit automatisch aktualisierten Kennzahlen ersetzen manuell erstellte Excel-Reports."
+  },
+  {
+    "id": "ex-08",
+    "title": "Feste Fokuszeiten ohne Meetings",
+    "description": "Zwei feste Blöcke pro Woche, in denen teamweit keine Meetings stattfinden."
+  },
+  {
+    "id": "ex-09",
+    "title": "Self-Service für IT-Standardanfragen",
+    "description": "Häufige IT-Anfragen wie Passwort-Reset oder Software-Freigaben über ein Self-Service-Portal abwickeln."
+  },
+  {
+    "id": "ex-10",
+    "title": "Vorlagen für wiederkehrende Aufgaben",
+    "description": "Gemeinsame Vorlagen für Protokolle, Statusberichte und Standard-E-Mails bereitstellen."
+  }
+]
